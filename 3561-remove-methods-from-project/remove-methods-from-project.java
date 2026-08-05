@@ -25,21 +25,21 @@ class Solution {
             }
         }
         List<Integer> ans = new ArrayList<>();
-        for(int i=0;i<n;i++) ans.add(i);
         for(int i=0;i<vis.length;i++){
             if(vis[i]==0){
                 for(int a:adj.get(i)){
                     if(vis[a]!=0){
+                        for(int j=0;j<n;j++) ans.add(j);
                           return ans;
                     }
                 }
             }
         }
-         List<Integer> ls = new ArrayList<>();
+         
         for (int i = 0; i < n; i++) {
              if (vis[i] == 0)
-                  ls.add(i);
+                  ans.add(i);
         }
-        return ls;
+        return ans;
     }
 }
