@@ -3,9 +3,7 @@ class Solution {
         int[] vis = new int[n];
         List<List<Integer>> adj = new ArrayList<>();
         for(int i=0;i<vis.length;i++){
-            vis[i]=0;
-            List<Integer> ls = new ArrayList<>();
-            adj.add(ls);
+            adj.add(new ArrayList<>());
         }
 
         for(int i=0;i<invocations.length;i++){
@@ -25,14 +23,13 @@ class Solution {
             }
         }
         List<Integer> ans = new ArrayList<>();
-        for(int i=0;i<vis.length;i++){
-            if(vis[i]==0){
-                for(int a:adj.get(i)){
-                    if(vis[a]!=0){
-                        for(int j=0;j<n;j++) ans.add(j);
-                          return ans;
-                    }
-                }
+       for (int[] edge : invocations) {
+           int u = edge[0];
+           int v = edge[1];
+
+           if (vis[u] == 0 && vis[v] == 1) {
+                for (int i = 0; i < n; i++) ans.add(i);
+                return ans;
             }
         }
          
