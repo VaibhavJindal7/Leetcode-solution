@@ -1,10 +1,12 @@
 class Solution {
     public int missingMultiple(int[] nums, int k) {
-        int[] pres = new int[nums.length+1];
-        for(int x : nums){
-            if (x%k==0 && x/k<=nums.length) pres[x/k]=1;
+        HashSet<Integer> hs = new HashSet<>();
+        for(int x:nums) hs.add(x);
+        for(int i=1;i<=nums.length;i++){
+            if(!hs.contains(k*i)){
+                return k*i;
+            }
         }
-        for(int i=1;i<=nums.length;i++) if(pres[i]==0) return k*i;
-        return k*(nums.length+1);
+       return k*(nums.length+1);
     }
 }
